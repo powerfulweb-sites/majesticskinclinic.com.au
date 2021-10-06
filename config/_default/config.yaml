@@ -4,8 +4,8 @@ title: "Majestic Skin Clinic"
 #   #replacements: "github.com/powerfulweb/hugo-common -> ../../hugo-common"
 #   imports:
 #     - path: "github.com/powerfulweb/hugo-common" 
-baseurl: "https://majesticskinclinic.com.au"
-
+#baseurl: "https://majesticskinclinic.com.au"
+baseurl: "https://serene-shirley-435411.netlify.app/"
 #buildDrafts: true #(false)
 #buildExpired: true #(false)
 #buildFuture: true #(false)
