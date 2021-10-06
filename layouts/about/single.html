@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+<div class="container-xxl">
+  <div class="row">
+    <div class="col-md-7">
+      <h2 class="pb-3" >{{ .Title }}</h2>
+      <div class="text-body">{{ .Content | markdownify }}</div>
+    </div>
+    <div class="col-md-5">
+      {{ $ctx := . }}
+      {{ with .Resources.GetMatch (index .Params.images 0) }}
+      {{ partial "image" (dict "page" $ctx "src" . "title" $ctx.Title "widths" (slice 500 650 800) "class"
+      "mx-sm-3" "sizes" "(min-width:768px)42vw, 100vw")}}
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

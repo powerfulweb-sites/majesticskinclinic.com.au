@@ -1,0 +1,29 @@
+// Required
+@import "bootstrap/scss/functions";
+@import "custom-functions.scss"; // 
+
+
+@import "custom-variables";  
+@import "custom-variables-nav";  
+
+@import "bootstrap/scss/variables";
+ //add custom variables to maps so they can be called through css selectors
+
+
+
+//configuration (required)
+@import "./custom-mixins"; 
+@import "bootstrap/scss/mixins";
+
+
+@import "bootstrap/scss/utilities";
+@import "./custom-utilities.scss";
+
+@import "custom-maps";
+
+
+// // Configuration
+// @import "functions";
+// @import "variables";
+// @import "mixins";
+// @import "utilities";

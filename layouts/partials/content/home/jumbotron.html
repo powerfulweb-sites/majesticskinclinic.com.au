@@ -1,0 +1,20 @@
+{{ if ne .Params.intro.draft true }}
+<div class="container-fluid bg-soft g-0">
+<div class="row g-0">
+  <div class="col p-0 text-center">
+    <div class=" h1 pt-2 " data-aos="fade-zoom-in">{{ .Params.intro.title }}</div>
+    {{ with .Params.intro.subtitle }}
+    <div class="h2 mb-1" data-aos="fade-zoom-in" data-aos-delay="200">{{ . }}</div>
+    {{ end }}
+    <a class="btn btn-secondary mx-1" data-aos="fade-left" role="button" href="{{ ref . "treatments" }}">Our Treatments</a>
+    <a class="btn btn-outline-secondary mx-1" data-aos="fade-right" role="button" href="{{ ref . "prices" }}">Buy Now</a>
+  </div>
+</div>
+<div class="row g-0">
+  <div class="col text-center">
+    {{ partial "image" (dict "page" . "src" (index .Params.images 0) "class" "" "style"
+    "max-width:1320px;" "placeholder" "empty" "sizes" "(min-width: 1320px)1320px,100vw" ) }}
+  </div>
+</div>
+</div>
+{{ end }}

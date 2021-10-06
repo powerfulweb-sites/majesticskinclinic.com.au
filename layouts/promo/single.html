@@ -1,0 +1,52 @@
+{{ define "main" }}
+
+<div class="container-xxl ">
+  <div class="row">
+    <div class="col">
+      <h2 class="pb-3">{{ .Title }}</h2>
+      {{ with .Params.subtitle }}
+      <div class="h4 text-primary pb-2">{{ . }}</div>
+      {{ end }}
+      <div class="text-body">{{ .Content | markdownify }}</div>
+    </div>
+  </div>
+
+  <!-- restrict size of promotion images and center col-->
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-xl-8 px-5 px-sm-0">
+      <!-- Slider main container -->
+      <div id="js-swiper-promotions" class="swiper px-0 px-sm-3 py-3">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          {{ range .Params.promoImages }}
+          <div class="swiper-slide d-flex justify-content-center">
+            <div class="p-3 bg-light">
+              {{ partial "image" (dict "page" $
+              "src" . "sizes" "(min-width:576px)50vw,100vw")}}
+            </div>
+          </div>
+          {{ end }}
+      
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination d-block d-sm-none"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      {{ partial "image" (dict "page" . "src" (index .Params.images 0) "class"
+      "mx-sm-3" "sizes" "(min-width:576px)66vw,100vw" "maxWidth" 1150)}}
+    </div>
+  </div>
+
+  {{ end }}

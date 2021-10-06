@@ -1,0 +1,16 @@
+{{ define "main" }}
+<div class="container-xxl">
+  <div class="row">
+    <h2 class="page__title">{{ .Title }}</h2>
+    {{ with .Params.subtitle }}
+    <div class="page__subtitle">{{ . | markdownify}}</div>
+    {{ end }}
+  </div>
+  <img src="/logo/wide-small.png" alt="{{ .Title }}" class="img-fluid pb-3" width=300/>
+  {{ with .Content }}
+  <div class="row">
+    <div class="page__content">{{ . | markdownify }}</div>
+  </div>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,230 @@
+
+
+
+$white:    #fff !default;
+$gray-100: #f2f2f3;//#f8f9fa !default; // light
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+//$gray-600: #535251; //#6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;  // dark
+$black:    #0A0A0A;
+
+$blue:    #0d6efd !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #f797af; //#d63384 !default;
+$red:     #dc3545 !default;  //danger
+$orange:  #D9ABA7;
+$yellow:  #ffc107 !default;  // warning
+$green:   #198754 !default;  //success
+$teal:    #20c997 !default;
+$cyan:    #0dcaf0 !default;  // info
+// scss-docs-start theme-color-variables
+$primary:      #b37f67;//#d48669;//#BFADA8;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $pink; //$cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-900 !default;
+$soft:        #eebea7;
+// scss-docs-end theme-color-variables
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "soft":       $soft
+);
+// scss-docs-end theme-colors-map
+
+// $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+//$light: #F3F3F3;
+
+
+// scss-docs-start spacer-variables-maps
+$spacer: 1rem !default;
+
+
+
+// $line-height-base: 1.5 !default; 
+// $line-height-sm: 1.25 !default;
+// $line-height-lg: 2!default; 
+
+
+
+
+$border-radius:               .5rem; //.25rem !default;
+$border-radius-sm:            .2rem !default;
+$border-radius-lg:            .3rem !default;
+$border-radius-pill:          50rem !default;
+
+// Settings for the `<body>` element.
+
+ //$body-bg:                   $white !default;
+// //$body-color:                rgba(7, 31, 32, 0.75); //$gray-800; //$gray-900 !default;
+// $body-text-align:           null !default;
+$body-color: #333333;
+
+
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:              shade-color($primary, 60%); //darker than primary                $primary !default;
+$link-decoration:                         underline !default;
+$link-shade-percentage:                   20% !default;
+$link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
+$link-hover-decoration:                   null !default;
+
+$stretched-link-pseudo-element:           after !default;
+$stretched-link-z-index:                  1 !default;
+
+
+
+$enable-gradients: true; //FALSE DEFAULT
+
+$enable-transitions: true; //enables many transitions
+// $btn-transition: color .5s ease-in-out,
+// background-color .5s ease-in-out,
+// border-color .5s ease-in-out,
+// box-shadow .5s ease-in-out !default;
+$border-radius-pill:          50rem !default;
+$btn-border-radius: 0; //$border-radius;  //$border-radius !default;
+
+$enable-shadows:          true;    //false !default;
+//$box-shadow:              0px 5px 25px rgba(218, 211, 211, 0.5);   // 0 .5rem 1rem rgba($black, .15) !default;
+
+$input-btn-padding-y: .625rem;
+$input-btn-padding-x: 1.875rem;
+$input-padding-y: .375rem; //reset to default because of above override               
+$input-padding-x: .75rem; //as above        
+//$border-width: 1px; //changes many border thicknesses on buttons(default 1px)
+$input-btn-focus-width:   0;      //.25rem !default;  //removed border from focussed buttons
+
+
+$input-border-radius: $border-radius; //square input fields
+
+// $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
+// $font-size-base effects the font size of the body text
+$font-size-root:              null !default;
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-sm:                $font-size-base * .875 !default;
+$font-size-lg:                $font-size-base * 1.25 !default;
+
+$font-weight-lighter:         lighter !default;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-bold:            700 !default;
+$font-weight-bolder:          bolder !default;
+
+$font-weight-base:            $font-weight-normal !default;
+
+$line-height-base:            1.5 !default;
+$line-height-sm:              1.25 !default;
+$line-height-lg:              2 !default;
+
+$h1-font-size:                $font-size-base * 3.5;//2.5 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.75 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;
+// scss-docs-end font-variables
+
+$font-family-base:           'Open Sans', sans-serif; //'Montserrat', sans-serif;
+$headings-font-family:        'Montserrat', sans-serif; //null !default;
+
+
+// scss-docs-start headings-variables
+$headings-margin-bottom:      $spacer / 2 !default;
+//$headings-font-family:        //Reckless Neue,Georgia,Times,serif;//null !default;
+$headings-font-style:         null !default;
+//$headings-font-weight:        500;//500 !default;
+$headings-line-height:        1.2 !default;
+$headings-color:              #0b3134;//null !default;
+// scss-docs-end headings-variables
+
+// scss-docs-start border-variables
+$border-width:                1px !default;
+$border-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px
+) !default;
+
+$border-color:                $gray-300 !default;
+// scss-docs-end border-variables
+
+$component-active-color:      $white !default;
+$component-active-bg:         $primary !default;
+
+
+// $nav-tabs-link-hover-border-color:  $gray-200 $gray-200; //$nav-tabs-border-color;
+// $nav-tabs-link-active-color:        $gray-700;
+// $nav-tabs-link-active-bg:           tint-color($primary, 70%);
+// $nav-tabs-link-active-border-color: $gray-300 $gray-300; // $nav-tabs-link-active-bg;
+
+// scss-docs-start nav-variables
+$nav-link-padding-y:                .5rem !default;
+$nav-link-padding-x:                1rem !default;
+$nav-link-font-size:                null !default;
+$nav-link-font-weight:              null !default;
+$nav-link-color:                    $black;//$link-color !default;
+$nav-link-hover-color:              $link-hover-color !default;
+$nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
+$nav-link-disabled-color:           $gray-600 !default;
+
+$nav-tabs-border-color:             $gray-300 !default;
+$nav-tabs-border-width:             $border-width !default;
+$nav-tabs-border-radius:            $border-radius !default;
+$nav-tabs-link-hover-border-color:  $gray-400 $gray-400 $nav-tabs-border-color !default;
+$nav-tabs-link-active-color:        $black;//$gray-700 !default;
+$nav-tabs-link-active-bg:           tint-color($primary, 70%);//$body-bg !default;
+$nav-tabs-link-active-border-color: $gray-400 $gray-400 $nav-tabs-link-active-bg;
+
+$nav-pills-border-radius:           $border-radius !default;
+$nav-pills-link-active-color:       $component-active-color !default;
+$nav-pills-link-active-bg:          $component-active-bg !default;
+// scss-docs-end nav-variables
+
+
+$text-muted:                  $gray-500 !default;
+
+
+// scss-docs-start card-variables
+// $card-spacer-y:                     $spacer !default;
+// $card-spacer-x:                     $spacer !default;
+// $card-title-spacer-y:               $spacer * .5 !default;
+$card-border-width:                 0; //$border-width !default;
+$card-border-color:                 null; //rgba($black, .125) !default;
+$card-border-radius:                0; //$border-radius !default;
+$card-box-shadow:                   null !default;
+$card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
+// $card-cap-padding-y:                $card-spacer-y * .5 !default;
+// $card-cap-padding-x:                $card-spacer-x !default;
+// $card-cap-bg:                       rgba($black, .03) !default;
+// $card-cap-color:                    null !default;
+// $card-height:                       null !default;
+// $card-color:                        null !default;
+// $card-bg:                           $white !default;
+// $card-img-overlay-padding:          $spacer !default;
+// $card-group-margin:                 $grid-gutter-width * .5 !default;
+// scss-docs-end card-variables
+
+
+$enable-negative-margins: true;

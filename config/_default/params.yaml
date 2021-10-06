@@ -1,0 +1,113 @@
+noApplePhoneLinks: true
+schemaSection: Website
+book:
+  url: https://www.fresha.com/providers/majestic-skin-clinic-pv2j081a?pId=475797
+  nowText: Book Now
+  consultText: Book Complimentary Consultation
+netlifyIdentity: false
+
+titleSeparator: "-"
+msTileColor: "#2b5797"
+siteLinksSearchBox: false
+titleAddition: ""
+appleFullScreen: true
+appleStatusColor: white
+images:
+  - logo_small.png
+twitterSite: null
+themecolor: "#ffffff"
+schemaType: Organization
+
+description: At Majestic Skin Clinic, we provide unique and exceptional personal
+  skin care experience with treatments and products that are proven to
+  work.  Bringing more that 10 years of experience in skin and laser treatments
+  and have learned what works best for a diverse of skin types and concerns for
+  both men and women.
+safariBgColor: "#f07731"
+#snipcart config
+snipcart:
+  key: NjEwNjJlOTctOThiOC00OTQzLWI0NzEtNTBlNGZhMTU1YTQ1NjM3NTg3NTcyNTgxNjc1MDg0  #production
+  #key: MjZhZjIxNjAtN2JmNC00MGEyLWFmYTUtOWYzOTJmNWU2YmMwNjM3NTg3NTcyNTgxNjc1MDg0  #demo
+  #side: true 
+  bootstrap: true
+
+
+social:
+  Instagram:
+    url: https://www.instagram.com/majestic_skinclinic/
+    icon: icons/bootstrap/instagram
+    disable: false
+  Facebook:
+    url: https://www.facebook.com/MSC.Caringbah/
+    icon: icons/bootstrap/facebook
+    disable: false
+  Google:
+    url: https://g.page/majestic_skinclinic_au?gm
+    icon: icons/bootstrap/google
+    disable: false
+
+# https://schema.org/Organization
+schemaData:
+  organization: true  # false for  "Person"
+  showPublishDate: false # true to show published and modified time/dates
+  foundingDate: # e.g. 2001
+  # https://schema.org/PostalAddress
+contact:
+  address:
+    streetAddress:
+    - Shire Doctors & Dentists Medical Center
+    - Unit 6-11
+    - 416 Kingsway
+    addressLocality: Caringbah
+    addressRegion: NSW
+    postalCode: 2229
+    addressCountry: Australia
+    url: https://goo.gl/maps/pXPYKRV54vHEjXLt6  # hasMap
+    geo: -34.0373506,151.1175854,20
+    icon: bootstrap/geo-alt.svg
+  # servicePostalAddress:
+  #   postOfficeBoxNumber:
+  #   addressLocality: Pyrmont
+  #   addressRegion: NSW
+  #   postalCode: 2009
+  #   addressCountry: Australia
+  openingHours:
+  - dayOfWeek: Monday
+    closed: true
+  - dayOfWeek: Tuesday
+    opens: "10:00:00"
+    closes: "19:30:00"
+  - dayOfWeek: Wednesday
+    opens: "10:00:00"
+    closes: "19:30:00"
+  - dayOfWeek: Thursday
+    opens: "10:00:00"
+    closes: "19:30:00"
+  - dayOfWeek: Friday
+    opens: "10:00:00"
+    closes: "19:30:00"
+  - dayOfWeek: Saturday
+    opens: "10:00:00"
+    closes: "15:00:00"
+  - dayOfWeek: Sunday
+    closed: true
+  telephone:
+  - diabled: false
+    text: 0466 695 722
+    url: tel:+61466695722
+    icon: icons/bootstrap/telephone
+  - disabled: true
+    text: (02) 9063 8650
+    url: tel:+61290638650
+    icon: icons/bootstrap/telephone
+  email:
+  - text: caringbah@majesticskinclinic.com.au
+    url: mailto:mahsa@majesticskinclinic.com.au
+    icon: bootstrap/envelope
+  logo: /logo/wide-small.png
+
+
+# founder:
+# foundingDate:
+# foundingLocation:
+# logo

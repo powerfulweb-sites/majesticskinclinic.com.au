@@ -1,0 +1,25 @@
+
+
+<!-- mobile footer -->
+<div class="d-grid d-sm-none fixed-bottom">
+  <a role="button" class="btn btn-secondary" href="{{ .Site.Params.book.url }}" target="_blank" rel="noopener">
+    {{ $.Site.Params.book.nowText }}
+  </a>
+</div>
+<!-- conditionally load lazysizes on multi page sites -->
+{{/*  does not work when displaying images on _index.md based on .Data.Pages  */}}
+{{/* with .Resources.ByType "image"  }}
+  {{ range . }}
+    {{ if ne .MediaType.SubType "svg" }}
+      
+    {{ end }}
+  {{ end }}
+{{ end */}}
+
+{{/* partial "scripts/esbuild" (dict "src" "js/lazysizes.js" "load" "async") */}}
+
+
+
+
+
+

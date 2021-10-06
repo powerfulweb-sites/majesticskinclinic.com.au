@@ -1,0 +1,28 @@
+{{ define "main" }}
+
+  {{ partial "content/home/jumbotron" . }}
+  {{ partial "content/home/book" . }}
+  {{ partial "content/home/cards" . }}
+
+{{ if .Site.Params.netlifyIdentity }}
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+<style>
+  /* bs5 $zindex-modal-backdrop */
+  #netlify-identity-widget {
+    z-index: 1040 !important;
+  }
+</style>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+{{ end }}
+
+{{ end }}

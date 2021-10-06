@@ -1,0 +1,4 @@
+{{/*  {{< svg-inline "icons/bootstrap/telephone.svg" >}}  params cannot be passed */}}
+
+{{ $icon := resources.Get (.Get 0) }}
+{{ $icon.Content | safeHTML }}

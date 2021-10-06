@@ -1,0 +1,244 @@
+backend:
+  name: git-gateway
+
+
+editor:
+  preview: false
+#repo: powerfulweb/majesticskinclinic.com.au
+#branch: master  # (master)
+squash_merges: true
+
+#publish_mode: editorial_workflow
+media_folder: static/img/uploads
+public_folder: /img/uploads
+
+site_url: https://majesticskinclinic.netlify.app/
+logo_url: https://majesticskinclinic.netlify.app/logo/wide-small.png
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "content/_index.md"
+        label: "Home"
+        name: "home"
+        media_folder: ''
+        public_folder: ''
+        fields:
+          - {label: "Description", name: "description", widget: "text", hint: Shows up on search engine results. }
+          - {label: "Intro", name: intro, widget: object, fields: [
+              {label: "Title", name: "title", widget: string},
+              {label: Draft, name: draft, widget: boolean, required: false},
+              {label: "Images", name: "images", widget: "image", media_folder: "", required: false, allow_multiple: true},
+              {label: "Subtitle", name: "subtitle", widget: string},
+              # {label: "Text", name: "text", widget: "text", required: false }
+              ]}
+          - {label: "Promotions", name: promotions, widget: object, fields: [
+              {label: "Title", name: "title", widget: string},
+              {label: Draft, name: draft, widget: boolean, required: false},
+              {label: "Images", name: "images", widget: "image", media_folder: "", required: false, allow_multiple: true},
+              {label: "Subtitle", name: "subtitle", widget: string},
+              # {label: "Text", name: "text", widget: "text", required: false }
+              ]}
+          - {label: "About", name: about, widget: object, fields: [
+              {label: "Title", name: "title", widget: string},
+              {label: Draft, name: draft, widget: boolean, required: false},
+              {label: "Images", name: "images", widget: "image", media_folder: "", required: false, allow_multiple: true},
+              {label: "Subtitle", name: "subtitle", widget: string},
+              # {label: "Text", name: "text", widget: "text", required: false }
+              ]}
+      - file: "content/treatments/_index.md"
+        label: "Skin Treatments"
+        name: "treatments"
+        media_folder: ''
+        public_folder: ''
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Draft, name: draft, widget: boolean, required: false}
+          - {label: "Description", name: "description", widget: "text", hint: Shows up on search engine results. }
+          # - {label: "Body", name: "body", widget: "markdown", required: false }
+      - file: "content/laser/_index.md"
+        label: "Laser Hair Removal" # Used in the UI, ie.: "New Post"
+        name: laser
+        media_folder: ''
+        public_folder: ''
+        fields: # The fields each document in this collection have
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Draft", name: "draft", widget: "boolean", required: false}
+          - {label: "Consultation Button", name: "consult", widget: "boolean", default: true}
+          - {label: "Images", name: "images", widget: "image", media_folder: "", required: false, allow_multiple: true}
+          # - {label: "Display Order", name: "weight", widget: "number", value_type: "int"}
+          - {label: "Description", name: "description", widget: "text", hint: Shows up on search engine results. }
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Body - Lower section ", name: "content2", widget: "markdown", required: false}
+          # - {label: "Visible", name: "visible", widget: hidden, default: true}
+      - file: "content/price/index.md"
+        label: "Price List"
+        name: "price"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Draft, name: draft, widget: boolean, required: false}
+          - {label: "Images", name: "images", widget: "image", media_folder: "", required: false, allow_multiple: true}
+          - {label: "Description", name: "description", widget: "text", hint: Shows up on search engine results. }
+          # - {label: "Body", name: "body", widget: "markdown", required: false }
+          # - label: Items
+          #   name: priceList
+          #   widget: list
+          #   fields:
+          #     - {label: Name, name: name, widget: string}
+          #     - {label: Price, name: price, widget: number, value_type: "float" }
+          #     - {label: Draft, name: draft, widget: boolean, required: false}
+      - file: "content/book/_index.md"
+        label: "Book Online"
+        name: "book"
+        media_folder: ''
+        public_folder: ''
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Draft, name: draft, widget: boolean, required: false}
+          - {label: "Images", name: "images", widget: "image", media_folder: "", required: false, allow_multiple: true}
+          - {label: "Description", name: "description", widget: "text", hint: Shows up on search engine results. }
+          - {label: "Body", name: "body", widget: "markdown", required: false }
+      - file: "content/buy/_index.md"
+        label: "Buy Online"
+        name: "purchase"
+        media_folder: ''
+        public_folder: ''
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Subitle, name: subtitle, widget: string}
+          - {label: Draft, name: draft, widget: boolean, required: false}
+          - {label: "Images", name: "images", widget: "image", media_folder: "", required: false, allow_multiple: true}
+          - {label: "Description", name: "description", widget: "text", hint: Shows up on search engine results. }
+          - {label: "Body", name: "body", widget: "markdown", required: false }
+          - {label: "Column 1 Image", name: "imgCol1", widget: "image", media_folder: "images", required: false, allow_multiple: false}
+          - {label: "Column 2 Image", name: "imgCol2", widget: "image", media_folder: "images", required: false, allow_multiple: false}
+      - file: "content/about/_index.md"
+        label: "About Us"
+        name: "about"
+        media_folder: ''
+        public_folder: ''
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Draft, name: draft, widget: boolean, required: false}
+          - {label: "Images", name: "images", widget: "image", media_folder: "", required: false, allow_multiple: true}
+          - {label: "Description", name: "description", widget: "text", hint: Shows up on search engine results. }
+          - {label: "Body", name: "body", widget: "markdown", required: false }
+      - file: "content/contact/_index.md"
+        label: "Contact"
+        name: "contact"
+        media_folder: ''
+        public_folder: ''
+        fields:
+          - {label: Title, name: title, widget: string }
+          - {label: Draft, name: draft, widget: boolean, required: false }
+          - {label: "Description", name: "description", widget: "text", hint: Shows up on search engine results. }
+          - {label: Contact Form Title, name: formTitle, widget: string, requied: false }
+          - {label: Contact Details Title, name: contactTitle, widget: string, required: false }
+          - label: Contact Details
+            name: details
+            widget: list
+            fields:
+              - {label: Text, name: text, widget: text}
+              - {label: URL, name: url, widget: string, required: false }
+              - {label: Icon, name: icon, widget: string}
+              - {label: New Tab, name: newTab, widget: boolean, default: true, required: false}
+              - {label: Draft, name: draft, widget: boolean, required: false}
+      - file: "content/terms/_index.md"
+        label: "Terms and Conditions"
+        name: "terms"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Draft, name: draft, widget: boolean, required: false}
+          - {label: "Description", name: "description", widget: "text", hint: Shows up on search engine results. }
+          - {label: "Body", name: "body", widget: "markdown", required: false }
+      # - file: "content/thanks/index.md"
+      #   label: "Thank You"
+      #   name: "thanks"
+      #   fields:
+      #     - {label: Title, name: title, widget: string}
+      #     - {label: Draft, name: draft, widget: boolean, required: false}
+      #     - {label: "Body", name: "body", widget: "markdown", required: false }
+  - name: "treatments" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Treatments" # Used in the UI, ie.: "New Post"
+    label_singular: "Treatment"
+    folder: "content/treatments" # The path to the folder where the documents are stored
+    create: true
+    media_folder: ''
+    public_folder: ''
+    nested:
+      depth: 2 # max depth to show in the collection tree
+    filter: {field: "visible", value: true}
+    delete: false
+    path: "{{slug}}/index.md"
+    meta: { path: { widget: string, label: 'URL', index_file: 'index' } }
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Draft", name: "draft", widget: "boolean", required: false}
+      - {label: "Consultation Button", name: "consult", widget: "boolean", default: true}
+      - {label: "Images", name: "images", widget: "image", media_folder: "", required: false, allow_multiple: true}
+      # - {label: "Display Order", name: "weight", widget: "number", value_type: "int"}
+      - {label: "Description", name: "description", widget: "text", hint: Shows up on the treatments overview page. }
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Body - Lower section ", name: "content2", widget: "markdown", required: false}
+      - {label: "Visible", name: "visible", widget: hidden, default: true}
+  - name: "database"
+    label: "Database"
+    files: 
+      - file: "data/prices.yaml"
+        name: prices
+        label: Prices
+        fields:
+          - label: Treatments
+            name: treatments
+            widget: list
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: ID, name: id, widget: string, required: true, hint: no spaces and must be unique}
+              - {label: Draft, name: draft, widget: boolean, required: false }
+              # - {label: Buy Online, name: buyOnline, widget: boolean, required: false }
+              - label: Categories
+                name: categories
+                widget: list 
+                fields:
+                  - {label: Title, name: title, widget: string}
+                  - {label: ID, name: id, widget: string, required: true, hint: no spaces and must be unique}
+                  - {label: Draft, name: draft, widget: boolean, required: false }
+                  # - {label: Buy Online, name: buyOnline, widget: boolean, required: false }
+                  - label: Items
+                    name: items
+                    widget: list 
+                    fields:
+                      - {label: Title, name: title, widget: string}
+                      - {label: ID, name: id, widget: string, required: true, hint: no spaces and must be unique, do not change it once its set! }
+                      - {label: Draft, name: draft, widget: boolean, required: false }
+                      - {label: Buy Online, name: buyOnline, widget: boolean, required: false, hint: Item will show up on the buy online page}
+                      # - {label: Paypal, name: paypal, widget: text, required: false }
+                      - {label: Was, name: price, widget: "number", value_type: "float", required: false }
+                      - {label: Price,name: online, widget: "number", value_type: "float", required: false}
+                      - {label: Buy 3, name: online3, widget: "number", value_type: "float", required: false}
+          
+
+  - name: settings
+    label: Settings
+    files:
+      - file: config/_default/params.yaml
+        label: Site Parameters
+        name: params
+        fields:
+          - label: Social media buttons
+            name: socialLinks
+            widget: list
+            fields:
+              - {label: URL, name: url, widget: string}
+              - {label: Icon-button, name: icon, widget: string}
+              - {label: Icon-small, name: iconSimple, widget: string}
+              - {label: Draft, name: draft, widget: boolean, required: false}
+          - {label: "Book Now button", name: book, widget: object, fields: [
+              {label: "URL", name: "url", widget: string},
+              {label: Book Now Text, name: nowText, widget: string},
+              {label: Consultation Text, name: consultText, widget: string}]}
+          - {label: "Site Description", name: description, widget: text, hint: Shows up on search engine results. }
+
+        
+        

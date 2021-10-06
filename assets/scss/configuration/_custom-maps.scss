@@ -1,0 +1,25 @@
+//define custom colours
+$transparent: rgba(255, 255, 255, 0);
+$soft: #eebea7;//#fed1bfa1; //;
+// Create custom COLORS map
+$custom-colors: (
+  "transparent": $transparent,
+ "soft": $soft
+  );  // creates a bg with the color assigned to $body-bg
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+
+
+// Custom SPACERS map
+$custom-spacers: (
+  6: $spacer * 4,
+  7: $spacer * 5,
+  8: $spacer * 6,
+  9: $spacer * 7,
+  10: $spacer * 8,
+  11: $spacer * 9, 
+  12: $spacer * 10
+);
+// Merge the maps
+$spacers: map-merge($spacers, $custom-spacers);

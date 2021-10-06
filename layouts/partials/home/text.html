@@ -1,0 +1,18 @@
+<div class="mb-3">
+  {{ with .params.title }}
+  <h2>{{ . }}</h2>
+  {{ end }}
+
+  {{ with .params.text }}
+  <div data-aos="fade-right">{{ . | markdownify }}</div>
+  {{ end }}
+
+  {{ with .params.listTitle }}
+  <div class="fw-bold" data-aos="fade-right">{{ . }}</div>
+  {{ end }}
+  <div data-aos="fade-right">
+    {{ range .params.list }}
+    <span>{{ . }}</span><br />
+    {{ end }}
+  </div>
+</div>

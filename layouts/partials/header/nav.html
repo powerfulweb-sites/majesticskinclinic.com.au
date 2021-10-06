@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-white" id="js-navParent">
+  <div class="container-fluid">
+      {{/*  <a class="navbar-brand" href="{{ "/" | absURL }}">  */}}
+      <div class="navbar-brand d-lg-none">
+        <img src="{{ "/logo/logo-mobile.jpg" | relURL }}" srcset="{{ "/logo/logo-mobile.jpg" | relURL }} 1x, {{ "/logo/logo-mobile-2x.jpg" | relURL }} 2x" alt="{{ site.Title }}" 
+        width="140" height="54" />
+      </div>
+      {{/*  </a>   */}}
+      <div class="d-flex ms-auto pe-3">
+        <a href="#" class="snipcart-checkout">
+          <div class="position-relative o-svg o-svg--primary o-svg--lg p-0 m-3 d-lg-none d-flex me-auto">
+          
+            {{/* partial "scripts/svg-inline.html" "icons/bootstrap/cart-fill.svg" */}}
+            {{ partial "svg-font.html" (dict "svg" "icons/custom/snipcart") }}
+
+          <!-- badge rounded-pill bg-secondary-->
+            <span class="position-absolute top-0 start-100 translate-middle  snipcart-items-count"><span class="visually-hidden">Cart Contents</span></span>
+          </div>
+        </a>
+      </div>
+    <button id="js-navbarToggler" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">&nbsp;</span>
+      <span class="navbar-toggler-icon">&nbsp;</span>
+      <span class="navbar-toggler-icon">&nbsp;</span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+          {{ if .HasChildren }}  
+          <li class="{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }} nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{- .Name -}}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {{ range .Children }}
+              <!-- <div class="dropdown-divider"></div> -->
+              <li>
+                <a class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }} dropdown-item" href="{{ .URL | relLangURL }}">{{- .Name -}}</a>
+              </li>
+              {{ end }}
+            </ul>
+          </li>
+          {{ else }}
+          <li class="nav-item">
+              <a href="{{ .URL | relLangURL }}" class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }} nav-link" {{ with .Params.Anchor }}data-bs-target="{{ . }}"{{ end }}>
+                  {{- .Name -}}
+              </a>
+          </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+
+      <a
+        role="button"
+        class="btn m-2 ms-auto btn-outline-secondary d-none d-sm-block"
+        href="{{ .Site.Params.book.url }}"
+        target="_blank"
+        rel="noopener">
+        {{ $.Site.Params.book.nowText }}
+      </a>
+   
+      {{ if .IsTranslated }}
+      <select class="lang-list" id="select-language" onchange="location = this.value;">
+        {{ $siteLanguages := .Site.Languages }}
+        {{ $pageLang := .Page.Lang }}
+        {{ range .Page.AllTranslations }}
+        {{ $translation := .}}
+        {{ range $siteLanguages }}
+        {{ if eq $translation.Lang .Lang }}
+        {{ $selected := false }}
+        {{ if eq $pageLang .Lang}}
+        <option id="{{ $translation.Language }}" value="{{ $translation.Permalink }}" selected>{{ .LanguageName }}</option>
+        {{ else }}
+          <option id="{{ $translation.Language }}" value="{{ $translation.Permalink }}">{{ .LanguageName }}</option>
+        {{ end }}
+        {{ end }}
+        {{ end }}
+        {{ end }}
+      </select>
+      {{ end }}
+    </div>
+  </div>
+</nav>
+  <!-- <h2 class="page__header">{{ .Title }}</h2> -->
+
+

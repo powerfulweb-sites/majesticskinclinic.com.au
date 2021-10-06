@@ -1,0 +1,66 @@
+{{/*
+
+form:
+  id: js-contactForm
+  inputs:
+    - id: js-contact-name
+      col: col-md-6
+      requiredDot: false
+      autofocus: false  # when form is the focus of the page, only on top input
+      name: name
+      type: text
+      placeholder: Name
+      minlength: 2
+      rows: 6 # for textarea
+      required: true
+      invalidFeedback: Please enter name
+
+css:
+bs5 forms
+is-hidden 
+u-fade-in
+*/}}
+{{ define "form" }}
+<div class="form-group pb-3 {{ with .col }}{{ . }}{{end}}">
+  {{ $ctx := . }}
+  {{ with .label}}
+  <label for="{{- $ctx.id -}}" class="form-label">{{ . }}{{ if $ctx.requiredDot }}<span class="text-danger"> *</span>{{ end }}</label>
+  {{ end }}
+  {{ $lt := "<" }}
+  {{ $lt | safeHTML }}{{- if eq .type "textarea" -}}textarea{{- else -}}input{{ end }} 
+    id="{{- .id -}}" 
+    name="{{- .name -}}" 
+    class="form-control"
+    placeholder="{{- .placeholder -}}" aria-label="{{- .placeholder -}}" 
+    {{with .minlength }} minlength="{{- . -}}"{{ end }}
+    {{ if .required }} required{{ end }}
+    {{ if .autofocus }} autofocus{{ end }}
+    {{ if eq .type "textarea" }}
+    rows="{{- .rows -}}"></textarea>
+    {{ else }}
+    type="{{- .type -}}">
+    {{ end }}
+  {{ with .invalidFeedback }}
+  <div class="invalid-feedback">
+    {{- . -}}
+  </div>
+  {{ end }}
+</div>
+{{ end }}
+
+<form id="{{ .form.id }}" class="c-contact-form needs-validation" novalidate enctype="multipart/form-data">
+  {{ with .form.inputs }}
+  <div class="row pt-0">
+    {{ range . }}
+      {{ template "form" . }}
+    {{ end }}
+  </div>
+  {{ end }}
+  <div class="form-group pb-3">
+    <button class="btn btn-outline-primary btn-lrg mt-3" id='js-submit' disabled>Send</button>
+    <div id="js-load" class="spinner-border is-hidden" role="status"></div>
+    <noscript>Please enable javascript to use the contact form</noscript>
+  </div>
+</form>
+
+<div id="js-statusMessage" class="is-hidden u-fade-in" role="alert"></div>

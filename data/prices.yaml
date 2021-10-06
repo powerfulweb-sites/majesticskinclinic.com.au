@@ -1,0 +1,502 @@
+treatments:
+  - title: Laser Hair Removal
+    id: laser
+    draft: false
+    categories:
+      - title: Upper Body
+        draft: false
+        id: upper
+        items:
+          - title: Full Face
+            draft: false
+            price: 50
+            online: 30
+            online3: 27
+            id: i_R5MAHt0
+          - title: Side of Face
+            description: Full Face description
+            draft: false
+            price: 33
+            online: 20
+            online3: 17
+            id: Iuk9AmQOI-
+          - title: Face & Neck
+            price: 59
+            online: 35.4
+            online3: 30
+            id: VkP_Xr2hy
+          - title: Lip
+            price: 15
+            online: 8
+            online3: 8
+            id: 4f5Gta7zx
+          - title: Chin
+            price: 15
+            online: 8
+            online3: 8
+            id: 4_ltmCnFe
+          - title: Lip & Chin
+            price: 20
+            online: 10
+            online3: 10
+            id: _kICK-hAO
+          - title: Forehead
+            price: 25
+            online: 15
+            online3: 11
+            id: Iqk6MVbc8
+          - title: Ears
+            price: 15
+            online: 8
+            online3: 8
+            id: zfXv7s8lPY
+          - title: Cheeks
+            price: 22
+            online: 14
+            online3: 11.5
+            id: KzQJU0Z9K
+          - title: Chest & Stomach
+            price: 140
+            online: 84
+            online3: 78.5
+            id: soHNln9cz
+          - title: Chest
+            price: 95
+            online: 57
+            online3: 50.5
+            id: NJ5UAkAvQ
+          - title: Stomach
+            price: 95
+            online: 57
+            online3: 50.5
+            id: GzK_doLqOa
+          - title: 1/2 back
+            price: 129
+            online: 77.4
+            online3: 64
+            id: 0zeXFRqmo
+          - title: Back & Shoulders
+            price: 140
+            online: 84
+            online3: 69.5
+            id: mtBn4gt8T
+          - title: Arms (1/2)
+            price: 90
+            online: 54
+            online3: 49.5
+            buyOnline: true
+            id: 28NGzTspz
+          - title: Arms (full)
+            price: 140
+            online: 84.5
+            online3: 75
+            id: PQjvo0xlr
+          - title: Areola
+            price: 25
+            online: 8
+            online3: 8
+            id: hQGgt1hmNN
+          - title: Naval line
+            price: 25
+            online: 8
+            online3: 8
+            id: dWiQvR3ab
+          - title: Hands & Fingers
+            price: 8
+            online: 8
+            online3: 8
+            id: RbHxP6zNr
+          - title: Neck (Front & Back)
+            price: 69
+            online: 41
+            online3: 35.5
+            id: 24FLjb1tn
+          - title: Neck (front or back)
+            price: 35
+            online: 21
+            online3: 18.5
+            id: fGMtN5leu
+          - title: Under Arms
+            price: 25
+            online: 8
+            online3: 8
+            buyOnline: true
+            id: biTVV7L9Dj
+        buyOnline: true
+      - title: Lower Body
+        draft: false
+        id: lower
+        items:
+          - title: Female Brazilian
+            price: 45
+            online: 22.5
+            online3: 20
+            id: X_zzb_oN9
+          - title: Female Brazilian + Under Arms
+            price: 50
+            online: 25
+            online3: 22.5
+            buyOnline: true
+            id: Tix2U_4-h
+          - title: Bikini Line
+            price: 20
+            online: 10
+            online3: 10
+            id: fSPQzlrX6
+          - title: Legs (1/2)
+            price: 110
+            online: 66
+            online3: 55.5
+            id: 0CUj-WrIc
+          - title: Legs (full)
+            price: 140
+            online: 84
+            online3: 79.5
+            buyOnline: true
+            id: y2mJ4Wyzfd
+          - title: Full legs & Brazilian & Underarms
+            price: 149
+            online: 89.4
+            online3: 84.5
+            id: sqLkcw5FZ
+          - title: 1/2 legs & Brazilian & Underarms
+            price: 135
+            online: 81
+            online3: 72.5
+            id: sKfPSK2-V
+          - title: Feet & Toes
+            price: 35
+            online: 8
+            online3: 8
+            id: -2p9YeysH
+          - title: Knees
+            price: 39
+            online: 23.4
+            online3: 10
+            id: DBly1rdTS
+          - title: Buttocks
+            price: 110
+            online: 66
+            online3: 56.5
+            id: dGqC3XWeA
+          - title: Male Brazilian
+            price: 120
+            online: 72
+            online3: 62.5
+            id: SVnT3cHQJ
+        buyOnline: true
+      - title: Add Ons
+        draft: false
+        id: addon
+        items:
+          - title: Underarms
+            price: null
+            online: 8
+            online3: null
+            id: UKQack5ghh
+          - title: Inner arms
+            price: null
+            online: 8
+            online3: null
+            id: elC-z2rOc
+          - title: Inner Buttocks
+            price: null
+            online: 8
+            online3: null
+            id: RslSx1hFB
+          - title: Navel Line
+            price: null
+            online: 8
+            online3: null
+            id: TdMv5LNJ2
+          - title: Areola
+            price: null
+            online: 8
+            online3: null
+            id: CUi6RL6D9
+          - title: Ears
+            price: null
+            online: 8
+            online3: null
+            id: bUSgGZm1Z
+          - title: Toes & Feet
+            price: null
+            online: 8
+            online3: null
+            id: 7qZxPqes_
+          - title: Knees
+            price: null
+            online: 8
+            online3: null
+            id: JKHZsa5O47
+          - title: Hands & Fingers
+            price: null
+            online: 8
+            online3: null
+            id: zoI_klza3
+          - title: Nose
+            price: null
+            online: 8
+            online3: null
+            id: xo2ZW56t8
+          - title: Buttocks
+            price: null
+            online: 40
+            online3: null
+            id: T_uUODR3d
+      - title: Full Body Packages
+        draft: false
+        id: fullBody
+        items:
+          - title: Female Full Body
+            price: 260
+            online: 185
+            online3: 165
+            id: H1ZNDbBWS
+          - title: Male Upper Body
+            price: 199
+            online: 119.4
+            online3: 109.5
+            id: aWygZCLHY
+          - title: Male Full body
+            price: 299
+            online: 220
+            online3: 199
+            id: SoGcs05WX
+    buyOnline: true
+  - title: Skin Treatments
+    id: treatments
+    categories:
+      - title: LED Light Therapy
+        id: led
+        items:
+          - title: Yellow
+            price: 66
+            online: 39
+            online3: 30.5
+            buyOnline: true
+            id: JnJX_AD0p
+          - title: Blue
+            price: 66
+            online: 39
+            online3: 30.5
+            buyOnline: true
+            id: ebAMwowzAf
+        buyOnline: true
+      - title: Hydrodermabrasion
+        id: hydro
+        items:
+          - title: Face
+            price: 85
+            online: 53
+            online3: 45.5
+            buyOnline: true
+            id: rChhGNYy9
+          - title: Face & neck
+            price: 95
+            online: 57
+            online3: 47.5
+            id: OqbuHSmpE
+        buyOnline: true
+      - title: Microdermabrasion
+        id: micro
+        items:
+          - title: 20 mins
+            price: 68
+            online: 40.5
+            online3: 34
+            id: UcCreHNQr
+          - title: Face & neck
+            price: 74
+            online: 44.5
+            online3: 39.5
+            id: JIqMOUnPE
+          - title: Express - 10mins
+            price: 49
+            online: 25
+            online3: 20
+            id: 4iuZWFiGs
+      - title: Skin Needling
+        id: needle
+        items:
+          - title: Face & Free LED light
+            buyOnline: true
+            price: 270
+            online: 140
+            online3: 136.5
+            id: k2NNd5vSp
+          - title: Breasts
+            price: 170
+            online: 102
+            online3: 89.5
+            id: 41ceUia4Gs
+          - title: Stomach
+            price: 270
+            online: 162
+            online3: 136.5
+            id: -GgqJqBNS
+          - title: Buttocks
+            price: 270
+            online: 162
+            online3: 136.5
+            id: Nw1xtt8-9
+      - title: RF Skin Resurfacing
+        id: rf
+        items:
+          - title: Face+Free LED light
+            price: 365
+            online: 234.5
+            online3: 225
+            id: Qe1TyUJD2
+          - title: Face+Neck
+            price: 465
+            online: 280
+            online3: 265
+            id: a3H5oMch7
+          - title: Stomach
+            price: 275
+            online: 165
+            online3: 160
+            id: r25d29pvk
+          - title: thighs
+            price: 365
+            online: 235
+            online3: 225
+            id: oIKb85Cgy
+          - title: Breast
+            price: 235
+            online: 139
+            online3: 129
+            id: DkxgefccU8
+      - title: Skin Tightening & Rejuvenation
+        id: tighten
+        items:
+          - title: Face
+            price: 85
+            online: 51
+            online3: 45.5
+            id: vXdIAXPbH
+          - title: Face & Neck
+            price: 110
+            online: 66
+            online3: 55.5
+            id: qh7JsuxU8
+          - title: Brazilian area
+            price: 65
+            online: 39
+            online3: 33.5
+            id: lekfKXevr
+      - title: Pigmentation reduction
+        id: pigment
+        items:
+          - title: Face
+            price: 99
+            online: 59.5
+            online3: 49.5
+            buyOnline: true
+            id: -GNMRXorI
+          - title: 1/2 face
+            price: 65
+            online: 40
+            online3: 34.5
+            id: 1vJc_mCy3
+          - title: Decolletage
+            price: 79
+            online: 47.4
+            online3: 41.5
+            id: Owt3M7CXV
+          - title: Neck
+            price: 60
+            online: 39
+            online3: 39
+            id: CEXQApwQ6b
+          - title: Face & Neck & Decolletage
+            price: 220
+            online: 133.5
+            online3: 124.5
+            id: kR5yHB2cL
+          - title: Arms (Upper or Lower)
+            price: 139
+            online: 83.4
+            online3: 75.5
+            id: rJCeKmhpF
+          - title: Shoulders
+            price: 88
+            online: 52.8
+            online3: 47.5
+            id: rGv_noYHy
+          - title: Hands & Fingers
+            price: 57
+            online: 34.5
+            online3: 30
+            id: 8OFnvN2gt
+          - title: Legs (Upper or Lower)
+            price: 270
+            online: 162
+            online3: 146
+            id: 2JOehtr6L
+          - title: 1/2 Back
+            price: 165
+            online: 99
+            online3: 89
+            id: b7Dt75hSu
+          - title: Spot Treatments
+            price: 65
+            online: 39
+            online3: 39
+            id: 4qDXRSWf6B
+        buyOnline: true
+      - title: Add ons
+        id: addon
+        items:
+          - title: Treatment Mask
+            price: null
+            online: 15
+            online3: null
+            id: WU8PhZNQy
+          - title: Vitamin infusion
+            price: null
+            online: 20
+            online3: null
+            id: ZrSuEZ18X
+          - title: Extraction
+            price: null
+            online: 15
+            online3: null
+            id: g8Hp3_p2K
+          - title: Yellow LED light
+            price: null
+            online: 27
+            online3: null
+            id: 7ZdySVAo8
+      - title: Vein & Capillaries
+        id: vein
+        items:
+          - title: Facial capillaries (5mins)
+            price: 88
+            online: 52
+            online3: 43.5
+            id: REEs5Ul68
+          - title: Spider vein removal (5mins)
+            price: 158
+            online: 94
+            online3: 85
+            id: MtuxqFSqF
+      - title: Flushing/Diffuse redness
+        id: diffuse
+        items:
+          - title: Face & Free LED light
+            price: 88
+            online: 52
+            online3: 43.5
+            id: bUY7pyxQcD
+          - title: Face & Neck
+            price: 110
+            online: 66
+            online3: 59
+            id: LyGbPcMWE
+          - title: Face & Neck & Decolletage
+            price: 185
+            online: 109
+            online3: 99
+            id: e53U-6fYu-g

@@ -1,0 +1,41 @@
+{{ define "main" }}
+<div class="container-xxl">
+  <!-- <div class="row">
+    <div class="col">
+      <h2 class="page__title">{{ .Title }}</h2>
+      {{ with .Params.subtitle }}
+      <div class="page__subtitle">{{ . | markdownify}}</div>
+      {{ end }}
+    </div>
+  </div> -->
+
+  <div class="row">
+    <!-- CONTACT DETAILS -->
+    <div class="col-md-5">
+      <h2 class="page__title">{{ .Title }}</h2>
+      {{ with .Params.subtitle }}
+      <div class="page__subtitle">{{ . | markdownify}}</div>
+      {{ end }}
+      {{- with .Content -}}
+      <div class="ms-3">{{- . | markdownify -}}</div>
+      {{ end }} {{ with .Params.contactTitle }}
+      <h3>{{ . }}</h3>
+      {{ end }} {{ partial "content/contact/contactDetails" .Params }} {{/*
+      partial "components/c-social-links2.html" (dict "class" "o-btn-svg
+      o-btn-svg--outline-primary mr-2 mb-2") */}}
+    </div>
+    <!-- CONTACT FORM -->
+    <div class="col-md-7">
+      {{ with .Params.formTitle }}
+      <h3>{{ . }}</h3>
+      {{ end }} {{ partial "content/contact/contactForm" .Params }}
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col">
+    {{ partial "components/c-gmap-fluid" . }}
+  </div>
+</div>
+
+
+{{ end }}

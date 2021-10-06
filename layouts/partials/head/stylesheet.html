@@ -1,0 +1,23 @@
+
+{{ partial "libsass" "scss/index.scss" }}
+
+{{ partial "libsass" "scss/aos.scss" }}
+
+{{ if eq .Type "promo" }}
+{{ partial "libsass" "scss/swiper.scss" }}
+{{ end }}
+
+
+<!-- empty file will produce netlify error -->
+{{/* partial "libsass" "scss/vendors.scss" */}}
+
+{{ partialCached "snipcart/css" . }} 
+
+<!-- Page specific css file -->
+{{/*  
+{{ if eq .Type "gallery" }}
+{{ partial "scripts/libsass" "scss/gallery.scss" }}
+{{ end }}   */}}
+
+
+

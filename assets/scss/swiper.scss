@@ -1,0 +1,25 @@
+//BOOTSTRAP 5
+// Configuration
+@import 'configuration';
+
+// //SWIPER VARIABLES
+// $themeColor: $primary; // #007aff !default;
+// @import "swiper/swiper.scss";
+// @import "swiper/components/pagination/pagination.scss";
+// @import 'swiper/components/navigation/navigation.scss';
+
+//SWIPER VARIABLES + IMPORT
+$themeColor: $primary; // #007aff !default;
+@import "swiper/swiper.scss";
+@import "swiper/modules/pagination/pagination.scss";
+// fade does not display 2x slides with loop disabled
+// @import "swiper/modules/effect-fade/effect-fade.scss";
+//@import "swiper/components/navigation/navigation.scss";
+
+// #js-swiper-promotions {
+//   img[data-sizes='auto'] {
+//     //display: block;
+//     //max-width: 450px;
+  
+// }
+// }

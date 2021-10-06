@@ -1,0 +1,97 @@
+{{ define "main" }}
+
+<div class="container-xxl">
+  <div class="p-md-3">
+    <div class="row">
+      <div class="col">{{ if ne .Params.breadcrumbs false}}{{ partial "components/c-breadcrumbs" . }}{{ end }}</div>
+    </div>
+    <div class="row bg-light m-0 p-0">
+      <div class="row m-0 p-0">
+        <div class="col-md-5 px-0 pb-3">
+          {{ $ctx := . }}
+          {{ with .Resources.GetMatch (print (index .Params.images 0)) }}
+          {{ partial "image.html" (dict "page" $ctx "src" . "title" $ctx.Title "class"
+          "" "sizes" "(min-width:768px)42vw,100vw" "widths" (slice 300 550 900) "fillRatio" (slice 3 2))}}
+          {{ end }}
+        </div>
+        <div class="col-md-7 px-0">
+          <div class="p-3">
+            <h2>{{ .Title }}</h2>
+            {{ .Content | markdownify }}
+          </div>
+        </div>
+      </div>
+      <div class="row m-0 p-0">
+        <!-- <hr class="mb-0"> -->
+        {{ if .Params.imgSecondary }}
+        <div class="col-md-7 px-0">
+          {{ else }}
+          <div class="col px-0">
+            {{ end }}
+            <div class="p-3">
+              {{ with .Params.content2 }}
+              <p>{{ . | markdownify }}</p>
+              {{ end }}
+              {{ if .Params.consult }}
+              <a role="button" class="btn m-3 btn-primary" href="{{ .Site.Params.book.url }}" target="_blank">
+                {{ $.Site.Params.book.consultText }}
+              </a>
+              {{ end }}
+            </div>
+          </div>
+          {{ $ctx := . }}
+          {{ with index .Params.images 1 }}
+          <div class="col-md-5 px-0">
+            {{ with $ctx.Resources.GetMatch (print .) }}
+            {{ partial "image.html" (dict "page" $ctx "src" . "title" $ctx.Title "class"
+            "" "sizes" "(min-width:768px)42vw,100vw" "widths" (slice 300 550 900) "fillRatio" (slice 3 2))}}
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{ template "comparison" . }}
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ define "comparison" }}
+{{ $ctx := . }}
+{{ if or (.Resources.Match "**before**") (.Resources.Match "**both**")}}
+<div class="row justify-content-center pt-3 m-0 bg-soft">
+  {{ .Scratch.Set "counterBefore" 0}}
+  {{ $orderBefore := 1 }}
+
+  {{ with $ctx.Resources.Match "**before**"}}
+  {{ range . }}
+  <div class="col-6 col-sm-5 col-md-3 col-lg-2 {{ print " order-" $orderBefore }}">
+    {{ partial "image" (dict "page" $ctx "src" . "figure" true 
+    "figureTitle" (print "Before " $ctx.Title " treatment.") ) }}
+  </div>
+  {{ $orderBefore = add $orderBefore 2 }}
+  {{ end }}
+  {{ end }}
+  {{ $orderAfter := 2 }}
+  {{ with $ctx.Resources.Match "**after**"}}
+  {{ range . }}
+  <div class="col-6 col-sm-5 col-md-3 col-lg-2 {{ print " order-" $orderAfter }}">
+    {{ partial "image"
+    (dict "page" $ctx "src" . "figure" true 
+    "figureTitle" (print "After " $ctx.Title " treatment.") ) }}
+  </div>
+  {{ $orderAfter = add $orderAfter 2 }}
+  {{ end }}
+  {{ end }}
+
+  {{ with $ctx.Resources.Match "**both**"}}
+  {{ range . }}
+  <div class="col-12 col-sm-7 col-md-6 col-lg-5 col-xl-4 col xxl-3">
+    {{ partial "image" (dict "page" $ctx "src" . "figure" true 
+    "figureTitle" (print "Before and After " $ctx.Title " treatment.") ) }}
+  </div>
+  {{ end }}
+  {{ end }}
+</div>
+{{ end }}
+{{ end }}

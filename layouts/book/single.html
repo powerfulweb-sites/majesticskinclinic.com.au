@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="container-xxl">
+  <div class="row mb-3">
+    <div class="col-md-7">
+      <div class="h2">{{ .Title }}</div>
+      <div class="mb-3">
+        {{ .Content | markdownify }}
+      </div>
+      <a role="button" class="btn btn-outline-primary mb-3" href="{{ .Site.Params.book.url }}" target="_blank"
+        rel="noopener">{{ $.Site.Params.book.nowText }}</a>
+    </div>
+    <div class="col-md-5 order-md-first">
+      {{ $ctx := . }}
+      {{ with .Resources.GetMatch (index .Params.images 0) }}
+      {{ partial "image" (dict "page" $ctx "src" . "title" $ctx.Title "widths" (slice 500 650 800) "class"
+      "mx-sm-3" "sizes" "(min-width:768px)42vw, 100vw")}}
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

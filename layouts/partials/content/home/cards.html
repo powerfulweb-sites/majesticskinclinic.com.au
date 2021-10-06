@@ -1,0 +1,39 @@
+{{ range $i, $elem := .Params.cards }}
+{{ if ne $elem.draft true }}
+<div class="container-fluid g-0">
+  <div class="row d-flex justify-content-center g-0">
+    <div class="col-md-6">
+      <div class="d-flex {{if (modBool $i 2)}}flex-row-reverse{{ end }}">
+        <div class="max-width" style="">
+          {{if (modBool $i 2)}}
+            {{ partial "image" (dict "page" $ "src" .image "data" "data-aos='fade-left'" "sizes" "(min-width:778px)50vw,(min-width:1100px)550px, 100vw" "fillRatio" (slice 3 2) )}}
+          {{ else }}
+            {{ partial "image" (dict "page" $ "src" .image "data" "data-aos='fade-right'" "sizes" "(min-width:778px)50vw,(min-width:1100px)550px, 100vw" "fillRatio" (slice 3 2) )}}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 {{ if not (modBool $i 2) }}order-md-first bg-soft{{ else }}bg-light{{ end }}">
+      <div class="d-flex flex-row h-100 {{if not (modBool $i 2)}}flex-row-reverse{{ end }}">
+        <div class="card-body max-width h-100 d-flex flex-column justify-content-evenly" style="min-height:200px" 
+        {{if not (modBool $i 2)}}data-aos="fade-left"{{ else }}data-aos="fade-right"{{ end }} >
+          <div class="card-title h2">{{ .title }}</div>
+          {{ with .subtitle }}
+          <div class="card-text fs-3">{{ . | markdownify }}</div>
+          {{ end }}
+          <div class="card-text fs-5">
+            {{ with .text }}
+            <p>{{ . | markdownify }}</p>
+            {{ end }}
+            {{ if and .btnText .btnPage }}
+            <a href="{{ ref $ .btnPage }}"
+              class="btn btn-{{ if (modBool $i 2) }}outline-primary{{ else }}outline-secondary{{ end }}">{{ .btnText }}</a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+{{ end }}

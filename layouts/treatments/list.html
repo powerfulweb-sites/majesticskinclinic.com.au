@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="container-xxl">
+<!-- alternate bg (all break points) and order (md up) -->
+{{ range $i, $e := .Pages.ByWeight }}
+{{ $col := "order-md-first"}}
+{{ $row := "bg-light" }}
+{{ $btn := "btn-outline-secondary" }}
+{{if not (modBool $i 2)}}
+{{ $row = "bg-soft" }}
+{{ $col = ""}}
+{{ end }}
+
+  <div class="row mx-0 my-3 mx-sm-2  bg-gradient {{ $row }}">
+    <div class="col-md-6 col-lg-5  p-0">
+      {{ $ctx := . }}
+      {{ with .Resources.GetMatch (index $e.Params.images 0) }}
+      {{ partial "image.html" (dict "page" $ctx "src" . "title" $ctx.Title "sizes" "(min-width:768px)50vw,(min-width:992px)42vw,100vw"
+      "widths" (slice 300 550 950) "fillRatio" (slice 3 2))}}
+      {{ end }}
+    </div>
+    <div class="col-md-6 col-lg-7  {{ $col }}">
+      <div class="d-flex flex-column justify-content-evenly h-100" style="max-width:550px;">
+        <div class="h4 mb-3 mb-md-1 mt-2 mt-md-1">{{ $e.Title }}</div>
+        <div class="text-body mb-3">{{ $e.Description | markdownify }}</div>
+        <div><a role="button" href="{{ $e.Permalink }}" class="btn {{ $btn }} mb-3 mb-md-1">Read More</a></div>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+
+</div>
+{{ end }}

@@ -1,0 +1,22 @@
+{{ if ne .params.draft true }}
+
+<div class="card bg-soft">
+  <div class="row g-0">
+    <div class="col-lg-5 p-0">
+      {{ partial "scripts/srcset" (dict "page" .ctx "image" .params.imgMain "eager" "true") }}
+    </div>
+    <div class="col-lg-7 order-lg-first">
+      <div class="card-body h-100 d-flex flex-column justify-content-evenly " style="min-height:180px;">
+        <div class="card-title h2" data-aos="fade-zoom-in">{{ .params.title }}</div>
+        {{ with .params.subtitle }}
+        <div class="card-text fs-4" data-aos="fade-zoom-in">{{ . | markdownify }}</div>
+        {{ end }}
+        {{ with .params.text | markdownify }}
+        <div class="card-text fs-5" data-aos="fade-zoom-in">{{ . }}</div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ end }}

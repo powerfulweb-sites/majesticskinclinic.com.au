@@ -1,0 +1,128 @@
+{{ define "main" }}
+<div class="container-xxl">
+  <div class="row">
+    <div class="col">
+      <h2 class="pb-3">{{ .Title }}</h2>
+      {{ with .Params.subtitle }}
+      <div class="h4 text-primary pb-2">{{ . }}</div>
+      {{ end }}
+      <!-- <div class="text-body">{{ .Content | markdownify }}</div> -->
+    </div>
+  </div>
+  <div class="row pb-3">
+    <div class="col">
+      {{ partial "image" (dict "page" . "src" (index .Params.images 0) "class"
+      "")}}
+
+    </div>
+  </div>
+  <div class="row pb-3">
+    <div class="col">
+      {{ with .Site.Data.prices }}
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          {{ range $tabIndex, $treatment := .treatments }}{{ if not $treatment.draft }}
+          <button class="nav-link {{ if eq $tabIndex 0 }} active {{ end }}" id="nav-{{ $tabIndex }}-tab"
+            data-bs-toggle="tab" data-bs-target="#nav-{{ $tabIndex }}" type="button" role="tab"
+            aria-controls="nav-{{ $tabIndex }}" aria-selected="true">
+            {{ $treatment.title }}
+          </button>
+          {{ end }} {{ end }}
+        </div>
+      </nav>
+
+      <div class="tab-content pb-3" id="nav-tabContent">
+        {{ range $tabIndex, $treatment := .treatments }}{{ if not $treatment.draft }}
+        <div class="tab-pane fade {{ if eq $tabIndex 0 }} show active {{ end }} border-end border-start border-bottom" id="nav-{{ $tabIndex }}"
+          role="tabpanel" aria-labelledby="nav-{{ $tabIndex }}-tab">
+          <div class="accordion accordion-flush" id="accordion-{{ $tabIndex }}">
+            {{ range $accordionIndex, $category := $treatment.categories }}{{ if not $treatment.draft }}
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-{{ $accordionIndex }}">
+                <button class="accordion-button {{ if ne $accordionIndex 0 }} collapsed{{ end }}" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#collapse-{{ $tabIndex }}-{{ $accordionIndex }}"
+                  aria-expanded="true" aria-controls="collapse-{{ $tabIndex }}-{{ $accordionIndex }}">
+                  {{ $category.title }}
+                </button>
+              </h2>
+              <div id="collapse-{{ $tabIndex }}-{{ $accordionIndex }}"
+                class="accordion-collapse collapse {{ if eq $accordionIndex 0 }} show{{ end }}"
+                aria-labelledby="heading-{{ $tabIndex }}-{{ $accordionIndex }}"
+                data-bs-parent="#accordion-{{ $tabIndex }}">
+                <div class="accordion-body p-0">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col" width="30%  ">Item</th>
+                        <th scope="col" width="15%  ">Was</th>
+                        <th scope="col" width="15%  ">Price</th>
+                        <th scope="col" width="15%  ">Buy 3</th>
+                        <th scope="col" width="25%  ">Buy Now</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{ range $category.items }} {{ if not $category.draft }}
+                      <tr>
+                        <td>{{ .title }}</td>
+                        <td class="text-muted">{{ with .price }}{{ printf "%s%.2f" "$" (float . ) }}{{ end }}</td>
+                        <td class="text-danger">
+                          {{ with .online }}{{ printf "%s%.2f" "$" (float . ) }}{{ end }}
+                        </td>
+                        <td class="text-danger">
+                          {{ with .online3 }}{{ printf "%s%.2f" "$" (float . ) }}{{ end }}
+                        </td>
+                        <!-- calculate cost of x3 returns 0 if online or online3 are not set -->
+                        {{ $3 := 0 }}
+                        {{ $ctx := . }}
+                        {{ with .online3 }}
+                        {{ $x3 := mul 3 . }}
+                        {{ with $ctx.online }}
+                        {{ $3 = (sub $x3 . )}}
+                        {{ end }}
+                        {{ end }}
+                        <!-- conditionally set name, categories and description -->
+                        {{ $snipCategory := $category.title }}
+                        {{ $snipName := (print $category.title " - " .title) }}
+                        {{ $snipDesc := "Pre-purchase of skin treatment package"}}
+                        {{ if eq $treatment.id "laser" }}
+                        {{ $snipCategory = $treatment.title }}
+                        {{ $snipName = (print $treatment.title " - " .title) }}
+                        {{ $snipDesc = "Pre-purchase of laser hair removal package"}}
+                        {{ end }}
+                        <!-- buy now button -->
+                        <td>
+                          {{ if .online }}
+                          <button class="snipcart-add-item btn btn-primary" data-item-id="{{ .id }}"
+                            data-item-price="{{ .online }}" data-item-url="{{ $.RelPermalink }}"
+                            data-item-description="{{ $snipDesc }}" {{/* data-item-image="/logo/logo.jpg" */}}
+                            data-item-name="{{ $snipName }}" {{ with $3 }} data-item-custom1-name="Buy 3 Discount Price"
+                            data-item-custom1-options="No|Yes[+{{ . }}]" {{ end }} data-item-max-quantity="2"
+                            data-item-shippable="false" data-item-categories="{{ $snipCategory }}">
+                            Buy
+                          </button>
+                          {{ end }}
+                        </td>
+                      </tr>
+                      {{ end }}{{ end }}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            {{ end }}{{ end }}
+          </div>
+        </div>
+        {{ end }} {{ end }}
+        <!--   end treatments -->
+      </div>
+      {{ end }}
+    </div>
+  </div>
+  <!-- end data -->
+  <div class="row pb-3 justify-content-center">
+    <div class="col-md-4 ">
+      {{ partial "image" (dict "page" . "src" (index .Params.images 1) "class" "" "sizes" "(min-width:768px)33vw,100vw" "widths" (slice 450 650 900) )}}
+    </div>
+  </div>
+</div>
+{{ end }}

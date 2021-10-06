@@ -1,0 +1,397 @@
+{{/*  
+SITE PARAMS  
+.Site.Params.schemaType "Organization" or "Person"
+.Site.Params.images: [] #first image is chosen
+.Site.Params.siteLinksSearchBox
+
+
+
+optional
+        "{{ .Site.Params.twitterURL | safeURL }}",
+        "{{ .Site.Params.linkedInURL | safeURL }}",
+        "{{ .Site.Params.gGitHubURL | safeURL }}",
+        "{{ .Site.Params.facebookURL | safeURL }}"
+  
+
+{{ if eq .Section .Site.Params.schemaSection -}}
+
+
+
+
+{{ if .IsHome -}}
+  {{ with .Site.Params.schemaType -}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "{{ . }}",
+      "url": "{{ "/" | absURL }}",
+      "name": "{{ site.Title }}",
+      {{ if eq site.Params.schemaType "Organization" -}}
+      {{ with site.Params.images }}
+        {{ $schemaLogo := index . 0 }}
+        "logo": "{{ "/" | absURL }}{{ $schemaLogo }}",
+      {{ end }}
+      {{ end }}
+      "sameAs": [
+        "{{ site.Params.twitterURL | safeURL }}",
+        "{{ site.Params.linkedInURL | safeURL }}",
+        "{{ site.Params.gGitHubURL | safeURL }}",
+        "{{ site.Params.facebookURL | safeURL }}"
+      ]
+    }
+    </script>
+  {{ end -}}
+  {{ if .Site.Params.siteLinksSearchBox -}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "{{ "/" | absURL }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ "/" | absURL }}?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+  {{ end -}}
+{{ end -}}
+{{ if .IsPage -}}
+  {{ if eq .Section .Site.Params.schemaSection -}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ .Permalink }}"
+      },
+      "headline": "{{ .Title }}",
+      "image": [{{ range $i, $e := .Params.images }}{{ if $i }}, {{ end }}{{ printf "%s%s" $.Permalink $e }}{{ end }}],
+      "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05CET" }}",
+      "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05CET" }}",
+      "author": {
+        "@type": "{{ .Site.Params.schemaType }}",
+        "name": "{{ .Site.Title }}"
+      },
+      "publisher": {
+        "@type": "{{ .Site.Params.schemaType }}",
+        "name": "{{ .Site.Title }}",
+        {{ if eq site.Params.schemaType "Organization" -}}
+        {{ with site.Params.images }}
+          {{ $schemaLogo := index . 0 }}
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ "/" | absURL }}{{ $schemaLogo }}"
+          }
+        {{ end }}
+        {{ end }}
+      },
+      "description": "{{ .Description }}"
+    }
+    </script>
+  {{ end -}}
+{{ end -}}
+  
+{{ $dot := . -}}
+{{ $dot.Scratch.Set "path" "" -}}
+{{ $dot.Scratch.Set "breadcrumb" slice -}}
+
+{{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" -}}
+{{ $.Scratch.Add "path" .Site.BaseURL -}}
+
+{{ $.Scratch.Add "breadcrumb" (slice (dict "url" .Site.BaseURL "name" "home" "position" 1 )) -}}
+  {{ range $index, $element := split $url "/" -}}
+    {{ $dot.Scratch.Add "path" $element -}}
+    {{ $.Scratch.Add "path" "/" -}}
+    {{ if ne $element "" -}}
+    {{ $.Scratch.Add "breadcrumb" (slice (dict "url" ($.Scratch.Get "path") "name" . "position" (add $index 2))) -}}
+  {{ end -}}
+{{ end -}}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{{ range $.Scratch.Get "breadcrumb" }}{{ if ne .position 1 }},{{ end }}{
+        "@type": "ListItem",
+        "position": {{ .position }},
+        "name": "{{ .name | humanize | title }}",
+        "item": "{{ .url }}"
+    }{{ end }}]
+}
+</script>
+
+*/}}
+{{ $baseURL := "/" | absURL -}}
+
+{{ $dot := . -}}
+{{ $dot.Scratch.Set "path" "" -}}
+{{ $dot.Scratch.Set "breadcrumb" slice -}}
+
+{{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" -}}
+{{ $.Scratch.Add "path" .Site.BaseURL -}}
+
+{{ $.Scratch.Add "breadcrumb" (slice (dict "url" .Site.BaseURL "name" "home" "position" 1 )) -}}
+  {{ range $index, $element := split $url "/" -}}
+    {{ $dot.Scratch.Add "path" $element -}}
+    {{ $.Scratch.Add "path" "/" -}}
+    {{ if ne $element "" -}}
+    {{ $.Scratch.Add "breadcrumb" (slice (dict "url" ($.Scratch.Get "path") "name" . "position" (add $index 2))) -}}
+  {{ end -}}
+{{ end -}}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      {{ if .Site.Params.schemaData.organisation -}}
+        "@type": "Organization",
+        "@id": {{ print $baseURL "#/schema/organization/1" }},
+      {{ else -}}
+        "@type": "Person",
+        "@id": {{ print $baseURL "#/schema/person/1" }},
+      {{ end -}}
+      "name": "{{ .Site.Title }}",
+      "url": {{ print $baseURL }},
+      "sameAs": [
+        {{- $socialArray := slice -}}
+        {{- range .Site.Params.social -}}
+        {{- $socialArray = $socialArray | append .url -}}
+        {{- end -}}
+        {{- delimit $socialArray ", "}}
+      ],
+      {{ if .Site.Params.schemaData.organisation -}}
+        "logo": {
+          "@type": "ImageObject",
+          "@id": {{ print $baseURL "#/schema/image/1" }},
+          "url": {{ .Site.Params.schemaData.logo | absURL }},
+          {{ $imgData := imageConfig printf "static/%s" .Site.Params.schemaData.logo }}
+          "width": {{ $imgData.Width }},
+          "height": {{ $imgData.Height }},
+          "caption": "{{ .Site.Title }}"
+        },
+        "image": {
+          "@id": {{ print $baseURL "#/schema/image/1" }}
+        }
+      {{ else -}}
+        "image": {
+          "@type": "ImageObject",
+          "@type": "ImageObject",
+          "@id": {{ print $baseURL "#/schema/image/1" }},
+          "url": {{ .Site.Params.schemaData.logo | absURL }},
+          {{- $imgData := imageConfig printf "static/%s" .Site.Params.schemaData.logo -}}
+          "width": {{ $imgData.Width }},
+          "height": {{ $imgData.Height }},
+          "caption": "{{ .Site.Title }}"
+        }
+      {{ end -}}
+    },
+    {
+      "@type": "WebSite",
+      "@id": {{ print $baseURL "#/schema/website/1" }},
+      "url": {{ print $baseURL }},
+      "name": "{{ .Site.Title }}",
+      "description": "{{ .Site.Params.description }}",
+      {{ if .Site.Params.schemaData.organisation -}}
+        "publisher": {
+          "@id": {{ print $baseURL "#/schema/organization/1" }}
+        }
+      {{ else -}}
+        "publisher": {
+          "@id": {{ print $baseURL "#/schema/person/1" }}
+        }
+      {{ end -}}
+    },
+    {
+      {{ if and (ne .Kind "taxonomy") (ne .Kind "term") -}}
+        "@type": "WebPage",
+      {{ else -}}
+        "@type": "CollectionPage",
+      {{ end -}}
+      "@id": {{ .Permalink }},
+      "url": {{ .Permalink }},
+      "name": "{{ .Title }}",
+      "description": "{{ .Description }}",
+      "isPartOf": {
+        "@id": {{ print $baseURL "#/schema/website/1" }}
+      },
+      {{ if .Site.Params.schemaData.organisation -}}
+        "about": {
+          "@id": {{ print $baseURL "#/schema/organization/1" }}
+        },
+      {{ else -}}
+        "about": {
+          "@id": {{ print $baseURL "#/schema/person/1" }}
+        },
+      {{ end -}}
+      {{ if .Site.Params.schemaData.showPublishDate -}}
+      "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05CET" }}",
+      "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05CET" }}",
+      {{ end -}}
+      "breadcrumb": {
+        "@id": {{ print .Permalink "#/schema/breadcrumb/1" }}
+      },
+      "primaryImageOfPage": {
+        "@id": {{ print .Permalink "#/schema/image/2" }}
+      },
+      "inLanguage": "{{ .Lang }}",
+      "potentialAction": [{
+        "@type": "ReadAction", "target": [{{ .Permalink }}]
+      }]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": {{ print .Permalink "#/schema/breadcrumb/1" }},
+      "name": "Breadcrumbs",
+      "itemListElement": [{{ $list := $.Scratch.Get "breadcrumb" }}{{ $len := (len $list) }}{{ range $index, $element := $list }}{{ if ne .position 1 }},{{ end }}{
+        "@type": "ListItem",
+        "position": {{ .position }},
+        "item": {
+          {{ if ne (add $index 1) $len -}}
+          "@type": "WebPage",
+          "@id": {{ .url }},
+          "url": {{ .url }},
+          "name": "{{ .name | humanize | title }}"
+          {{ else -}}
+          "@id": {{ .url }}
+          {{ end -}}
+        }
+        }{{ end }}]
+    },
+
+    {{ if and (eq .Kind "page") (or (eq .Section "blog") (eq .Section "docs") (eq .Section "tutorial") (eq .Section "showcase")) -}}
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": {{ print $baseURL "#/schema/article/1" }},
+          "headline": "{{ .Title }}",
+          "description": "{{ .Description }}",
+          "isPartOf": {
+            "@id": {{ .Permalink }}
+          },
+          "mainEntityOfPage": {
+            "@id": {{ .Permalink }}
+          },
+          {{ if .Site.Params.schemaData.showPublishDate -}}
+          "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05CET" }}",
+          "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05CET" }}",
+          {{ end -}}
+          "author": {
+            "@id": {{ print $baseURL "#/schema/person/2" }}
+          },
+          {{  if .Site.Params.schemaData.organization -}}
+            "publisher": {
+              "@id": {{ print $baseURL "#/schema/organization/1" }}
+            },
+          {{ else -}}
+            "publisher": {
+              "@id": {{ print $baseURL "#/schema/person/1" }}
+            },
+          {{ end -}}
+          "image": {
+            "@id": {{ print .Permalink "#/schema/image/2" }}
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": {{ print $baseURL "#/schema/person/2" }},
+          "name": {{ .Site.Params.schemaAuthor }},
+          "sameAs": [
+            {{ with .Site.Params.schemaAuthorTwitter -}}
+            {{ . }}
+            {{ end -}}
+            {{ with .Site.Params.schemaAuthorLinkedIn -}}
+            , {{ . }}
+            {{ end -}}
+            {{ with .Site.Params.schemaAuthorGitHub -}}
+            , {{ . }}
+            {{ end -}}
+          ]
+        }
+      ]
+    },
+    {{ end -}}
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ImageObject",
+          "@id": {{ print .Permalink "#/schema/image/2" }},
+          "url": {{ $.Scratch.Get "primaryImage" }},
+          "contentUrl": {{ $.Scratch.Get "primaryImage" }},
+          "caption": "{{ .Title }}"
+        }
+      ]
+    }
+
+  ]
+}
+</script>
+{{- with .Site.Params.schemaData.location -}}
+<script type="application/ld+json">
+  {
+    
+    "@context": "https://schema.org",
+    "@type": "PostalAddress",
+    "name": "{{ .Site.Title }}",
+    {{- with .postOfficeBoxNumber }}
+    "postOfficeBoxNumber": "{{ . }}",
+    {{- else -}}
+    {{- $street := slice -}}
+    {{- range .streetAddress -}}
+    {{- $street = $street | append . -}}
+    {{- end -}}
+    {{- $street = delimit $street ", " -}}
+    "streetAddress": "{{ $street }}",
+    {{- end -}}
+    "addressLocality": "{{ .addressLocality }}",
+    "addressRegion": "{{ .adressRegion }}",
+    "postalCode": "{{ .postalCode }}",
+    "addressCountry": "{{ .adress.Country }}"
+  }
+  </script>
+  {{- end -}}
+{{/*  example
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Paris, France",
+        "postalCode": "F-75002",
+        "streetAddress": "38 avenue de l'Opera"
+      },
+      "email": "secretariat(at)google.org",
+      "faxNumber": "( 33 1) 42 68 53 01",
+      "member": [
+        {
+          "@type": "Organization"
+        },
+        {
+          "@type": "Organization"
+        }
+      ],
+      "alumni": [
+        {
+          "@type": "Person",
+          "name": "Jack Dan"
+        },
+        {
+          "@type": "Person",
+          "name": "John Smith"
+        }
+      ],
+      "name": "Google.org (GOOG)",
+      "telephone": "( 33 1) 42 68 53 00"
+
+  */}}
