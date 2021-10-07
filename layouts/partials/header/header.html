@@ -69,7 +69,8 @@
             srcset="{{ $img368.RelPermalink }} 1x, {{ $img736.RelPermalink }} 2x">
           <source type="image/png" media="(max-width: 991)"
             srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==">
-          <img src="{{ $img424.RelPermalink }}" alt="{{ site.Title }}" title="{{ site.Title }}">
+          <img src="{{ $img424.RelPermalink }}" alt="{{ site.Title }}" title="{{ site.Title }}"
+          width="{{ $img424.Width }}" height="{{ $img424.Height }}">
         </picture>
         {{/* <img alt="{{ $title }}" class="{{ $class }}" sizes="
             (min-width: 1200) 424px,

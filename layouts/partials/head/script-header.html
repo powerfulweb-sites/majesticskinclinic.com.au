@@ -10,7 +10,7 @@
 {{ if eq .Type "promo" }}
 {{ partial "esbuild" (dict "src" "js/swiper.js") }}
 {{ end }}
-{{ partialCached "snipcart/js" . }}
+{{/*  partialCached "snipcart/js" . */}}
 <script>
   document.documentElement.className = document.documentElement.className.replace("no-js", "js");
   async function supportsWebp() {
