@@ -1,11 +1,8 @@
 {
-  "description": "Hugo starter theme for building modern websites with bootstrap that are secure, fast, and SEO-ready — by default.",
-  "version": "1.5.2",
-  "repository": "https://github.com/future-wd/hugo-shoelaces",
+  "description": "Business website",
+  "version": "2.0.0",
+  "repository": "https://github.com/powerfulweb-sites/majesticskinclinic.com.au",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "dev": "shx rm -rf public && exec-bin node_modules/.bin/hugo/hugo server  --bind=0.0.0.0 --disableFastRender --gc",
     "dev:preview": "shx rm -rf public && exec-bin node_modules/.bin/hugo/hugo server  --bind=0.0.0.0 --disableFastRender --gc --buildDrafts --buildFuture",

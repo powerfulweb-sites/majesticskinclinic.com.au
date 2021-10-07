@@ -1,0 +1,3 @@
+# github.com/future-wd/hugo-image v0.1.1
+# github.com/future-wd/hugo-snipcart/v3 v3.1.2
+# github.com/future-wd/hugo-svg-font v0.9.1
