@@ -1,7 +1,7 @@
 <div class="container-fluid bg-light">
   <div class="container bg-light" id="footer">
     <div class="row pt-3 ">
-      <div class="col-lg-3 col-6 footer-contact">
+      <div class="col-lg-3 col-sm-6 footer-contact">
         <h3>{{ .Site.Title }}</h3>
         {{ with .Site.Params.contact }}
         <p>
@@ -23,7 +23,7 @@
         </p>
         {{ end }}
       </div>
-      <div class="col-lg-3 col-6 footer-links">
+      <div class="col-lg-3 col-sm-6 footer-links">
         <h4>Useful Links</h4>
         <ul class="list-unstyled">
           {{ range .Site.Menus.pages }}
@@ -32,21 +32,21 @@
           {{ end -}}
         </ul>
       </div>
-      <div class="col-lg-6 col-md footer-links">
+      <div class="col-lg-6 footer-links">
         <h4>Our Treatments & Services</h4>
         <div class="row">
-          <div class="col-6">
+          <div class="col-sm-6">
             {{ $treatments := where (where .Site.Pages.ByWeight "Type" "treatments") "Kind" "page"}}
             {{ $length := len $treatments }}
             {{ $half := div $length 2 }}
-            <ul class="list-unstyled">
+            <ul class="list-unstyled mb-0">
               {{ range first $half $treatments -}}
               <li class="pb-2">{{ partial "svg-font" (dict "svg" "icons/box/bx-chevron-right" )}} <a
                   href="{{ .Permalink }}" class="text-decoration-none">{{ .Name }}</a></li>
               {{ end -}}
             </ul>
           </div>
-          <div class="col-6">
+          <div class="col-sm-6">
             <ul class="list-unstyled">
               {{ $lastHalf := math.Floor (div ($length | float) (2 | float))}}
               {{ range last $lastHalf $treatments -}}
