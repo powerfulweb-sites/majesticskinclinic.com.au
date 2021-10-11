@@ -21,7 +21,7 @@
     "release:dry-run": "standard-version --dry-run"
   },
   "devDependencies": {
-    "eslint": "^7.32",
+    "eslint": "^8.0",
     "markdownlint-cli": "^0.29.0",
     "npm-check": "^5.9.2",
     "standard-version": "^9.3.1",
