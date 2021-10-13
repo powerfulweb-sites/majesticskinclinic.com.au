@@ -21,7 +21,7 @@
     "release:dry-run": "standard-version --dry-run"
   },
   "devDependencies": {
-    "eslint": "^7.32",
+    "eslint": "^8.0.0",
     "markdownlint-cli": "^0.29.0",
     "npm-check": "^5.9.2",
     "standard-version": "^9.3.1",
@@ -33,13 +33,13 @@
   },
   "dependencies": {
     "@babel/cli": "^7.15",
-    "@babel/core": "^7.15",
-    "@babel/preset-env": "^7.15",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
     "@fullhuman/postcss-purgecss": "^4.0",
     "@popperjs/core": "^2.10.2",
     "aos": "^2.3.4",
     "autoprefixer": "^10.3.7",
-    "bootstrap": "^5.1.2",
+    "bootstrap": "^5.1.3",
     "exec-bin": "^1.0.0",
     "hugo-installer": "^3.1",
     "postcss": "^8.3.9",
