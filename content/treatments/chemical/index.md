@@ -4,7 +4,7 @@ description: >-
   Chemical peels, also called chemexfoliation or derma-peeling treatments, are cosmetic treatments performed on the face, typically used as an anti-aging solution to rejuvenate the skin.
 images:
   # - images/AdobeStock_233516856.jpeg
-  - image0.jpeg
+  - images/image0.jpeg
 date: 2021-05-25T22:28:19+10:00
 lastmod: 2021-05-25T22:28:19+10:00
 draft: false
