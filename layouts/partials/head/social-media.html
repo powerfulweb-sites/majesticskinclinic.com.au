@@ -57,3 +57,5 @@ twitterCreator: # if different from the site
 <meta name="twitter:creator" content="{{ . }}" />
 {{ end }}
 <meta name="twitter:url" content="{{ .Permalink }}">
+
+{{ template "_internal/google_analytics_async.html" . }}
