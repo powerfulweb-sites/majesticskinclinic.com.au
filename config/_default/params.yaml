@@ -114,4 +114,4 @@ contact:
 
 alert: 
   enabled: true
-  text: We are currently open under NSW Health Covid Safe Guidelines. Bookings are essential.
+  text: We are currently open under NSW Health Covid Safe Guidelines. [Bookings are essential](/book "Bookings").

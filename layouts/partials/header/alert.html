@@ -1,3 +1,3 @@
-<div class="alert alert-success rounded-0 p-2" role="alert">
-  <div class="text-center">{{ .Site.Params.alert.text | safeHTML }}</div>
+<div class="alert alert-secondary rounded-0 p-2" role="alert">
+  <div class="text-center">{{ .Site.Params.alert.text | markdownify | safeHTML }}</div>
 </div>
