@@ -111,3 +111,7 @@ contact:
 # foundingDate:
 # foundingLocation:
 # logo
+
+alert: 
+  enabled: true
+  text: We are currently open under NSW Health Covid Safe Guidelines. Bookings are essential.

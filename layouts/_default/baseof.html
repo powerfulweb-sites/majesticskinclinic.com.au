@@ -12,7 +12,7 @@
   {{ partial "header/script-header.html" . }}
 
   <header>
-    {{ if and .IsHome .Site.Params.alert }}
+    {{ if and .IsHome (eq .Site.Params.alert.enabled true) }}
     {{ partial "header/alert.html" . }}
     {{ end }}
     {{ partial "header/header.html" . }}
