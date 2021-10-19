@@ -4,9 +4,10 @@
       <div class="navbar-brand d-lg-none">
         <img src="{{ "/logo/logo-mobile.jpg" | relURL }}" srcset="{{ "/logo/logo-mobile.jpg" | relURL }} 1x, {{ "/logo/logo-mobile-2x.jpg" | relURL }} 2x" alt="{{ site.Title }}" 
         width="140" height="54" />
+        
       </div>
       {{/*  </a>   */}}
-      <div class="d-flex ms-auto pe-3">
+      <div class="d-flex me-auto">
         <a href="#" class="snipcart-checkout">
           <div class="position-relative o-svg o-svg--primary o-svg--lg p-0 m-3 d-lg-none d-flex me-auto">
           
@@ -17,6 +18,9 @@
             <span class="position-absolute top-0 start-100 translate-middle  snipcart-items-count"><span class="visually-hidden">Cart Contents</span></span>
           </div>
         </a>
+      </div>
+      <div class="fs-2 pt-3  ms-auto d-lg-none">
+        {{- partial "components/social-menu" (dict "class" "me-2 mb-2 text-primary") }}
       </div>
     <button id="js-navbarToggler" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

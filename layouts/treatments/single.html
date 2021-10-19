@@ -11,43 +11,50 @@
           {{ $ctx := . }}
           {{ with .Resources.GetMatch (print (index .Params.images 0)) }}
           {{ partial "image.html" (dict "page" $ctx "src" . "title" $ctx.Title "class"
-          "" "sizes" "(min-width:768px)42vw,100vw" "widths" (slice 300 550 900) "fillRatio" (slice 3 2))}}
+          "" "sizes" "(min-width:768px)42vw,100vw" "widths" (slice 300 550 900) )}}
           {{ end }}
         </div>
         <div class="col-md-7 px-0">
           <div class="p-3">
             <h2>{{ .Title }}</h2>
             {{ .Content | markdownify }}
+            {{ if and .Params.consult (not (index .Params.images 1)) }}
+            <div class="m03">
+            <a role="button" class="btn m-3 btn-primary" href="{{ .Site.Params.book.url }}" target="_blank">
+              {{ $.Site.Params.book.consultText }}
+            </a></div>
+            {{ end }}
           </div>
         </div>
       </div>
       <div class="row m-0 p-0">
         <!-- <hr class="mb-0"> -->
-        {{ if .Params.imgSecondary }}
+        {{ if (index .Params.images 1) }}
         <div class="col-md-7 px-0">
-          {{ else }}
+        {{ else }}
           <div class="col px-0">
+        {{ end }}
+          <div class="p-3">
+            {{ with .Params.content2 }}
+            <p>{{ . | markdownify }}</p>
             {{ end }}
-            <div class="p-3">
-              {{ with .Params.content2 }}
-              <p>{{ . | markdownify }}</p>
-              {{ end }}
-              {{ if .Params.consult }}
-              <a role="button" class="btn m-3 btn-primary" href="{{ .Site.Params.book.url }}" target="_blank">
-                {{ $.Site.Params.book.consultText }}
-              </a>
-              {{ end }}
-            </div>
-          </div>
-          {{ $ctx := . }}
-          {{ with index .Params.images 1 }}
-          <div class="col-md-5 px-0">
-            {{ with $ctx.Resources.GetMatch (print .) }}
-            {{ partial "image.html" (dict "page" $ctx "src" . "title" $ctx.Title "class"
-            "" "sizes" "(min-width:768px)42vw,100vw" "widths" (slice 300 550 900) "fillRatio" (slice 3 2))}}
+            
+            {{ if and .Params.consult (index .Params.images 1) }}
+            <a role="button" class="btn m-3 btn-primary" href="{{ .Site.Params.book.url }}" target="_blank">
+              {{ $.Site.Params.book.consultText }}
+            </a>
             {{ end }}
           </div>
+        </div>
+        {{ $ctx := . }}
+        {{ with index .Params.images 1 }}
+        <div class="col-md-5 px-0">
+          {{ with $ctx.Resources.GetMatch (print .) }}
+          {{ partial "image.html" (dict "page" $ctx "src" . "title" $ctx.Title "class"
+          "" "sizes" "(min-width:768px)42vw,100vw" "widths" (slice 300 550 900) )}}
           {{ end }}
+        </div>
+        {{ end }}
         </div>
       </div>
       {{ template "comparison" . }}
